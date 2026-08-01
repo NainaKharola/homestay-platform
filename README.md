@@ -431,6 +431,25 @@ Then display them like:
 
 ---
 
+# Live Deployment
+
+## Frontend
+
+https://home-stay-liard-ten.vercel.app/
+
+## Backend
+
+https://homestay-mni0.onrender.com/
+
+---
+
+## Known Limitations
+
+- The backend is hosted on Render's free tier.
+- After approximately 15 minutes of inactivity, the backend enters sleep mode.
+- The first request after inactivity may take 30–60 seconds while the service wakes up.
+- Subsequent requests are processed normally.
+
 # 👩‍💻 Author
 
 **Naina Kharola**
