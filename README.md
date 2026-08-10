@@ -1,104 +1,652 @@
 # 🏡 HomeStay
 
-HomeStay is a **full-stack MERN web application** developed as part of the **AI-Assisted Full Stack Web Development Internship**.
+A full-stack homestay management and discovery platform with an AI-powered property description generator.
 
-The platform allows users to discover, create, manage, and update homestay property listings through a modern React interface while an Express.js backend provides secure REST APIs. Property data is stored in **MongoDB Atlas**, authentication is handled using **JWT** and **Google OAuth**, and an **AI-powered Property Description Generator** helps hosts create professional listing descriptions using **Google Gemini**.
+---
+
+## 🌐 Live Demo
+
+**Frontend:**  
+https://home-stay-liard-ten.vercel.app/
+
+**Backend:**  
+https://homestay-mni0.onrender.com/
+
+---
+
+## 🎥 Demo Video
+
+**YouTube Demo:**  
+[Demo video will be added here]
+
+> The demo video will be uploaded to YouTube as an **Unlisted** video and the link will be added here.
+
+---
+
+## 📸 Screenshots
+
+### Home / Dashboard
+
+![HomeStay Home Page](screenshots/home.png)
+
+### Explore / Featured Homestays
+
+![Explore Homestays](screenshots/explore.png)
+
+### Manage Stay
+
+![Manage Stay](screenshots/manage-stay.png)
+
+### AI Property Description Generator
+
+![AI Property Description Generator](screenshots/ai-generator.png)
+
+> Replace the screenshot filenames above with the actual screenshots added to the `screenshots/` folder.
 
 ---
 
 # ✨ Features
 
 ## 👤 Authentication
-- Email & Password Registration/Login
-- Google OAuth 2.0 Login
-- JWT Authentication
-- Protected Routes
-- Persistent User Session
+
+- User registration using email and password
+- User login using email and password
+- Google OAuth 2.0 authentication
+- JWT-based authentication
+- Protected routes
+- Persistent login session
+- Logout functionality
+- Authentication input validation
+- Rate limiting for authentication endpoints
 
 ## 🏠 Property Management
-- Create Property
-- View All Properties
-- View Property Details
-- Edit Property
-- Delete Property
-- Owner-specific Dashboard
+
+- Create new homestay properties
+- View all available properties
+- View individual property details
+- Search properties
+- Update existing properties
+- Delete properties
+- Owner-specific property management
+- Property information including:
+  - Title
+  - Location
+  - Price per night
+  - Bedrooms
+  - Bathrooms
+  - Property type
+  - Amenities
+  - Images
+  - Description
 
 ## 🤖 AI Property Description Generator
-Generate professional real-estate descriptions instantly using Google Gemini AI.
 
-The generator accepts:
+HomeStay includes an AI-powered property description generator using **Google Gemini**.
 
-- Property Title
+Hosts can provide:
+
+- Property title
 - Location
-- Price per Night
-- Bedrooms
-- Bathrooms
-- Property Type
+- Price per night
+- Number of bedrooms
+- Number of bathrooms
+- Property type
 - Amenities
-- Additional Attractions
+- Additional attractions/information
 
-and returns a polished, marketing-friendly description ready for publishing.
+The AI generates a professional, readable and marketing-friendly property description that can be used for the property listing.
 
-## 🎨 Frontend
-- Responsive UI
-- Tailwind CSS
-- React Router
-- Loading States
-- Error Handling
-- Toast Notifications
+## 🎨 User Interface
 
-## ⚙ Backend
-- REST API
-- Express.js
-- MongoDB Atlas
-- Mongoose ODM
-- Input Validation
-- Error Middleware
-- Rate Limiting
-- CORS Configuration
+- Responsive React interface
+- Desktop and mobile-friendly layout
+- React Router navigation
+- Loading states
+- Error handling
+- Toast notifications
+- Clean property listing interface
+- User dashboard
+- Property management interface
+
+## 🔐 Backend Security
+
+- JWT authentication
+- Protected API routes
+- Password hashing using bcrypt
+- Request validation
+- CORS configuration
+- Authentication rate limiting
+- Centralized error handling
 
 ---
 
 # 🛠 Tech Stack
 
-## Frontend
-
-- React
-- Vite
-- Tailwind CSS
-- React Router DOM
-- Axios
-
-## Backend
-
-- Node.js
-- Express.js
-
-## Database
-
-- MongoDB Atlas
-- Mongoose
-
-## Authentication
-
-- JWT
-- Google OAuth 2.0
-- Passport.js
-
-## AI
-
-- Google Gemini API
-- @google/generative-ai SDK
-
-## Deployment
-
-- Frontend → Vercel
-- Backend → Render
-- Database → MongoDB Atlas
+| Layer | Technology | Purpose |
+|---|---|---|
+| Frontend | React | Component-based user interface |
+| Build Tool | Vite | Fast frontend development and production builds |
+| Styling | Tailwind CSS | Responsive and consistent UI styling |
+| Routing | React Router DOM | Client-side navigation |
+| Backend | Node.js | JavaScript runtime for server-side development |
+| API Framework | Express.js | REST API development |
+| Database | MongoDB Atlas | Cloud-based application data storage |
+| ODM | Mongoose | MongoDB schema and database interaction |
+| Authentication | JWT | Secure user authentication |
+| OAuth | Google OAuth 2.0 + Passport.js | Google-based authentication |
+| Password Security | bcrypt | Password hashing |
+| AI | Google Gemini API | AI-generated property descriptions |
+| Frontend Hosting | Vercel | Frontend deployment |
+| Backend Hosting | Render | Backend/API deployment |
 
 ---
 
-# 📂 Project Structure
+# 🚀 Setup Instructions
+
+Follow the steps below to run HomeStay locally.
+
+## 1. Clone the Repository
+
+```bash
+git clone https://github.com/NainaKharola/homeStay.git
+```
+
+Move into the project:
+
+```bash
+cd homeStay
+```
+
+---
+
+# 💻 Frontend Setup
+
+Install frontend dependencies:
+
+```bash
+npm install
+```
+
+Create a frontend environment file if required:
+
+```text
+.env
+```
+
+Example:
+
+```env
+VITE_BACKEND_URL=http://localhost:5000
+VITE_API_URL=http://localhost:5000/api/auth
+VITE_PROPERTIES_API_URL=http://localhost:5000/api/properties
+VITE_AI_API_URL=http://localhost:5000/api/ai
+```
+
+Start the frontend:
+
+```bash
+npm run dev
+```
+
+The frontend will normally be available at:
+
+```text
+http://localhost:5173
+```
+
+---
+
+# 🖥 Backend Setup
+
+Open a new terminal and navigate to the backend:
+
+```bash
+cd backend
+```
+
+Install backend dependencies:
+
+```bash
+npm install
+```
+
+Create:
+
+```text
+backend/.env
+```
+
+Add the required environment variables:
+
+```env
+PORT=5000
+
+MONGODB_URI=your_mongodb_connection_string
+
+JWT_SECRET=your_jwt_secret
+
+CLIENT_URL=http://localhost:5173
+FRONTEND_URL=http://localhost:5173
+
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+
+CALLBACK_URL=http://localhost:5000/api/auth/google/callback
+GOOGLE_CALLBACK_URL=http://localhost:5000/api/auth/google/callback
+
+GEMINI_API_KEY=your_gemini_api_key
+```
+
+Start the backend in development mode:
+
+```bash
+npm run dev
+```
+
+Or start it normally:
+
+```bash
+npm start
+```
+
+The backend will run at:
+
+```text
+http://localhost:5000
+```
+
+---
+
+# 🔑 Environment Variables
+
+## Frontend
+
+```env
+VITE_BACKEND_URL=
+VITE_API_URL=
+VITE_PROPERTIES_API_URL=
+VITE_AI_API_URL=
+```
+
+## Backend
+
+```env
+PORT=
+MONGODB_URI=
+JWT_SECRET=
+
+CLIENT_URL=
+FRONTEND_URL=
+
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+
+CALLBACK_URL=
+GOOGLE_CALLBACK_URL=
+
+GEMINI_API_KEY=
+```
+
+### Security Note
+
+Never commit:
+
+```text
+.env
+```
+
+or any API keys, database credentials, OAuth secrets or JWT secrets to GitHub.
+
+Use `.env.example` files containing only placeholder values when sharing configuration examples.
+
+---
+
+# 📡 API Documentation
+
+The backend exposes REST APIs through Express.js.
+
+Base URL:
+
+```text
+https://homestay-mni0.onrender.com
+```
+
+---
+
+## 🔐 Authentication APIs
+
+### Register User
+
+```http
+POST /api/auth/register
+```
+
+Example request:
+
+```json
+{
+  "name": "Naina Kharola",
+  "email": "user@example.com",
+  "password": "password123"
+}
+```
+
+Purpose:
+
+Creates a new HomeStay user account.
+
+---
+
+### Login User
+
+```http
+POST /api/auth/login
+```
+
+Example request:
+
+```json
+{
+  "email": "user@example.com",
+  "password": "password123"
+}
+```
+
+Purpose:
+
+Authenticates the user and returns authentication information.
+
+---
+
+### Get Current User
+
+```http
+GET /api/auth/me
+```
+
+Authentication:
+
+```http
+Authorization: Bearer <JWT_TOKEN>
+```
+
+Purpose:
+
+Returns information about the currently authenticated user.
+
+---
+
+### Google Login
+
+```http
+GET /api/auth/google
+```
+
+Purpose:
+
+Starts the Google OAuth 2.0 authentication flow.
+
+---
+
+# 🏠 Property APIs
+
+### Get All Properties
+
+```http
+GET /api/properties
+```
+
+Example:
+
+```text
+https://homestay-mni0.onrender.com/api/properties
+```
+
+Example response:
+
+```json
+[
+  {
+    "id": 4,
+    "title": "Forest Retreat",
+    "location": "Coorg",
+    "price": 2800,
+    "rating": 4.5,
+    "description": "Peaceful stay surrounded by nature."
+  }
+]
+```
+
+---
+
+### Get Property by ID
+
+```http
+GET /api/properties/:id
+```
+
+Example:
+
+```http
+GET /api/properties/4
+```
+
+Purpose:
+
+Returns details of a specific property.
+
+---
+
+### Search Properties
+
+```http
+GET /api/properties/search
+```
+
+Purpose:
+
+Searches available properties based on supported search parameters.
+
+---
+
+### Create Property
+
+```http
+POST /api/properties
+```
+
+Authentication:
+
+```http
+Authorization: Bearer <JWT_TOKEN>
+```
+
+Example request:
+
+```json
+{
+  "title": "Himalayan View",
+  "location": "Nainital",
+  "price": 2500,
+  "bedrooms": 3,
+  "bathrooms": 2,
+  "propertyType": "Homestay",
+  "amenities": [
+    "Free WiFi",
+    "Parking"
+  ]
+}
+```
+
+Purpose:
+
+Creates a new property listing for the authenticated user.
+
+---
+
+### Update Property
+
+```http
+PUT /api/properties/:id
+```
+
+Authentication:
+
+```http
+Authorization: Bearer <JWT_TOKEN>
+```
+
+Purpose:
+
+Updates an existing property owned by the authenticated user.
+
+---
+
+### Delete Property
+
+```http
+DELETE /api/properties/:id
+```
+
+Authentication:
+
+```http
+Authorization: Bearer <JWT_TOKEN>
+```
+
+Purpose:
+
+Deletes an existing property listing.
+
+---
+
+# 🤖 AI API
+
+## Generate Property Description
+
+```http
+POST /api/ai/property-description
+```
+
+Authentication:
+
+```http
+Authorization: Bearer <JWT_TOKEN>
+```
+
+The endpoint requires at least:
+
+- Property title
+- Property location
+
+Example request:
+
+```json
+{
+  "title": "Himalayan View",
+  "location": "Nainital",
+  "price": 2500,
+  "bedrooms": 3,
+  "bathrooms": 2,
+  "propertyType": "Homestay",
+  "amenities": [
+    "Free WiFi",
+    "Parking",
+    "Mountain View"
+  ],
+  "additionalInfo": "Located close to Naini Lake."
+}
+```
+
+Example response:
+
+```json
+{
+  "success": true,
+  "description": "A beautiful Himalayan retreat..."
+}
+```
+
+The backend validates the required property information and sends a structured prompt to Google Gemini to generate the description.
+
+---
+
+# 🗄 Database
+
+HomeStay uses **MongoDB Atlas** as its cloud-hosted database.
+
+MongoDB was selected because:
+
+- It provides flexible document-based storage.
+- It integrates well with Node.js through Mongoose.
+- Property data can contain different attributes.
+- It provides persistent cloud storage.
+- It supports scalable application development.
+
+## Main Data Models
+
+### User
+
+Stores user authentication and profile information.
+
+Typical information includes:
+
+- Name
+- Email
+- Password hash
+- Google authentication information where applicable
+
+### Property
+
+Stores homestay listing information.
+
+Typical information includes:
+
+- Property ID
+- Title
+- Location
+- Price
+- Rating
+- Image
+- Description
+- Owner
+- Creation timestamp
+- Update timestamp
+
+### Booking
+
+The booking model/data structure is part of the planned application expansion.
+
+---
+
+# 🧩 Database Schema
+
+The repository includes the database schema visualisation:
+
+```text
+assets/DatabaseSchema.png
+```
+
+![HomeStay Database Schema](assets/DatabaseSchema.png)
+
+The main relationship is:
+
+```text
+User
+  │
+  └── owns
+        │
+        ▼
+     Property
+```
+
+A user can own multiple property listings.
+
+---
+
+# 🏗 Architecture / Folder Structure
+
+The project follows a separated frontend/backend architecture.
 
 ```text
 homeStay/
@@ -111,21 +659,22 @@ homeStay/
 ├── src/
 │   ├── assets/
 │   ├── components/
+│   ├── context/
 │   ├── layouts/
 │   ├── pages/
 │   ├── routes/
 │   ├── services/
-│   ├── context/
 │   └── utils/
 │
 ├── backend/
 │   ├── config/
 │   ├── controllers/
+│   ├── data/
 │   ├── middleware/
 │   ├── models/
 │   ├── routes/
 │   ├── services/
-│   ├── data/
+│   ├── utils/
 │   ├── server.js
 │   ├── seed.js
 │   ├── package.json
@@ -135,328 +684,222 @@ homeStay/
 └── PROMPTS.md
 ```
 
----
-
-# 🚀 Installation
-
-Clone the repository
-
-```bash
-git clone https://github.com/NainaKharola/homeStay.git
-```
-
-Move into the project directory
-
-```bash
-cd homeStay
-```
-
----
-
-# 💻 Frontend Setup
-
-Install dependencies
-
-```bash
-npm install
-```
-
-Run the frontend
-
-```bash
-npm run dev
-```
-
-Frontend will run at
+## Request Flow
 
 ```text
-http://localhost:5173
+User
+  │
+  ▼
+React + Vite Frontend
+  │
+  │ REST API
+  ▼
+Node.js + Express Backend
+  │
+  ├───────────────┐
+  ▼               ▼
+MongoDB Atlas    Google Gemini
 ```
 
 ---
 
-# 🖥 Backend Setup
+# 🔒 Security
 
-Navigate to backend
+HomeStay implements several security measures:
 
-```bash
-cd backend
-```
+- JWT-based authentication
+- Protected backend routes
+- bcrypt password hashing
+- Request validation
+- Authentication rate limiting
+- CORS configuration
+- Environment variables for secrets
+- Centralized error handling
 
-Install dependencies
+Authentication endpoints are rate-limited to help reduce repeated authentication attempts. 
 
-```bash
-npm install
-```
+---
 
-Create a `.env` file
+# 🤖 AI Implementation
 
-```env
-PORT=5000
-MONGODB_URI=your_mongodb_connection_string
-JWT_SECRET=your_secret_key
-
-CLIENT_URL=http://localhost:5173
-FRONTEND_URL=https://home-stay-liard-ten.vercel.app
-
-GOOGLE_CLIENT_ID=your_google_client_id
-GOOGLE_CLIENT_SECRET=your_google_client_secret
-
-CALLBACK_URL=http://localhost:5000/api/auth/google/callback
-GOOGLE_CALLBACK_URL=http://localhost:5000/api/auth/google/callback
-
-GEMINI_API_KEY=your_google_gemini_api_key
-```
-
-Run backend
-
-```bash
-npm run dev
-```
-
-or
-
-```bash
-npm start
-```
-
-Backend runs on
+The AI feature is implemented through a dedicated backend route:
 
 ```text
-http://localhost:5000
+POST /api/ai/property-description
 ```
 
----
+The request is protected by authentication middleware.
 
-# 🌐 Live Demo
+The backend:
 
-### Frontend
-
-https://home-stay-liard-ten.vercel.app/
-
-### Backend
-
-https://homestay-mni0.onrender.com/
-
----
-
-# 🗄 Database
-
-The application uses **MongoDB Atlas** as its cloud-hosted database.
-
-### Collections
-
-- Users
-- Properties
-- Bookings (Planned)
-
-### Features
-
-- Cloud Database
-- Persistent Storage
-- Mongoose Validation
-- CRUD Operations
-- Environment Variable Support
-
----
-
-# 🗂 Database Schema
-
-### Collections
-
-- User
-- Property
-- Booking
-
-### Relationships
-
-- One User can own multiple Properties.
-- One User can create multiple Bookings.
-- One Property can have multiple Bookings.
-
-![Database Schema](assets/DatabaseSchema.png)
-
----
-
-# 🤖 AI Property Description Generator
-
-The AI Property Description Generator helps hosts write attractive and professional property listings in seconds.
-
-### Features
-
-- Generates marketing-friendly descriptions
-- Uses Google Gemini AI
-- Accepts property details as input
-- Clean single-paragraph output
-- One-click integration into property form
-
-### Inputs
-
-- Title
-- Location
-- Price
-- Bedrooms
-- Bathrooms
-- Property Type
-- Amenities
-- Additional Attractions
-
----
-
-# 🔑 Generate a Google Gemini API Key
-
-1. Visit
-
-https://aistudio.google.com/
-
-2. Login with your Google account.
-
-3. Click
-
-```
-Get API Key
+```text
+Property Details
+       ↓
+Input Validation
+       ↓
+Prompt Builder
+       ↓
+Google Gemini
+       ↓
+Generated Description
+       ↓
+Frontend
 ```
 
-4. Create a new API key.
+The AI implementation uses:
 
-5. Add it inside
-
-```env
-backend/.env
+```text
+@google/generative-ai
 ```
 
-```env
-GEMINI_API_KEY=your_api_key
-```
+and the Google Gemini API.
 
----
+The prompt-engineering process is documented separately in:
 
-# 📡 REST API Endpoints
-
-| Method | Endpoint | Access | Description |
-|---------|----------|--------|-------------|
-| POST | `/api/auth/register` | Public | Register User |
-| POST | `/api/auth/login` | Public | Login User |
-| GET | `/api/auth/google` | Public | Google OAuth Login |
-| GET | `/api/auth/google/callback` | Public | Google Callback |
-| GET | `/api/auth/me` | Private | Logged-in User |
-| GET | `/api/properties` | Public | Get All Properties |
-| GET | `/api/properties/:id` | Public | Property Details |
-| POST | `/api/properties` | Private | Create Property |
-| PUT | `/api/properties/:id` | Private | Update Property |
-| DELETE | `/api/properties/:id` | Private | Delete Property |
-| POST | `/api/ai/property-description` | Private | Generate AI Description |
-
----
-
-# 🔒 Environment Variables
-
-```env
-PORT=5000
-
-MONGODB_URI=your_connection_string
-
-JWT_SECRET=your_secret
-
-CLIENT_URL=http://localhost:5173
-
-FRONTEND_URL=https://home-stay-liard-ten.vercel.app
-
-GOOGLE_CLIENT_ID=your_client_id
-
-GOOGLE_CLIENT_SECRET=your_client_secret
-
-CALLBACK_URL=http://localhost:5000/api/auth/google/callback
-
-GOOGLE_CALLBACK_URL=http://localhost:5000/api/auth/google/callback
-
-GEMINI_API_KEY=your_gemini_api_key
-```
-
-> **Note:** Never commit your `.env` file or API keys to GitHub.
-
----
-
-# 📖 Prompt Engineering
-
-The prompt engineering process for the AI Property Description Generator is documented in:
-
-```
+```text
 PROMPTS.md
 ```
 
-The document contains:
+---
 
-- Prompt Version 1
-- Prompt Version 2
-- Prompt Version 3
-- Testing Results
-- Prompt Improvements
-- Final Prompt
-- Deployment Notes
+# 📂 Important Project Files
+
+| File / Folder | Purpose |
+|---|---|
+| `src/` | React frontend |
+| `src/services/` | Frontend API services |
+| `src/context/` | Application context and authentication state |
+| `backend/server.js` | Express server entry point |
+| `backend/routes/` | Backend API routes |
+| `backend/controllers/` | Request handling logic |
+| `backend/models/` | MongoDB/Mongoose models |
+| `backend/services/` | External service integrations |
+| `backend/middleware/` | Authentication and error middleware |
+| `backend/utils/` | Utility functions and AI prompt building |
+| `assets/DatabaseSchema.png` | Database schema |
+| `PROMPTS.md` | AI prompt engineering documentation |
 
 ---
 
-# 📸 Screenshots
-
-You can include screenshots here.
-
-Example:
-
-```
-screenshots/
-│
-├── home.png
-├── dashboard.png
-├── login.png
-├── ai-generator.png
-├── property-details.png
-```
-
-Then display them like:
-
-```markdown
-## Home Page
-
-![Home](screenshots/home.png)
-
-## Dashboard
-
-![Dashboard](screenshots/dashboard.png)
-
-## AI Generator
-
-![AI](screenshots/ai-generator.png)
-```
-
----
-
-# Live Deployment
+# ☁️ Deployment
 
 ## Frontend
+
+The React/Vite frontend is deployed using **Vercel**.
+
+Live URL:
 
 https://home-stay-liard-ten.vercel.app/
 
 ## Backend
 
+The Node.js/Express backend is deployed using **Render**.
+
+Live URL:
+
 https://homestay-mni0.onrender.com/
+
+## Database
+
+MongoDB Atlas is used as the cloud database.
+
+## AI
+
+Google Gemini API is used for AI-powered property description generation.
 
 ---
 
-## Known Limitations
+# ⚠️ Known Limitations
 
 - The backend is hosted on Render's free tier.
-- After approximately 15 minutes of inactivity, the backend enters sleep mode.
-- The first request after inactivity may take 30–60 seconds while the service wakes up.
-- Subsequent requests are processed normally.
+- The backend may sleep after a period of inactivity.
+- The first request after inactivity can therefore take longer while the service wakes up.
+- The application currently focuses on property discovery and property management.
+- Booking functionality can be expanded in future versions.
+- AI-generated descriptions should still be reviewed by the property owner before publishing.
+- Third-party services such as Google OAuth and Gemini require valid API credentials/configuration.
+
+---
+
+# 🔮 Future Improvements
+
+Possible future improvements include:
+
+- Complete booking and reservation functionality
+- Payment integration
+- Advanced property filtering
+- Map-based property discovery
+- Reviews and ratings
+- Wishlist functionality
+- More AI-assisted property features
+- Improved analytics for property owners
+- Notification and messaging functionality
+- Additional deployment scalability
+
+---
+
+# 📖 Prompt Engineering
+
+The AI prompt development process is documented in:
+
+```text
+PROMPTS.md
+```
+
+It contains:
+
+- Initial prompt
+- Prompt improvements
+- Testing results
+- Final prompt
+- AI integration notes
+
+---
+
+# 🙌 Credits & Acknowledgements
+
+HomeStay was developed as part of the **AI-Assisted Full Stack Web Development Internship at TBI-GEU**.
+
+### Technologies & Services
+
+- React
+- Vite
+- Tailwind CSS
+- Node.js
+- Express.js
+- MongoDB Atlas
+- Mongoose
+- JWT
+- Passport.js
+- Google OAuth 2.0
+- Google Gemini API
+- Vercel
+- Render
+
+### Development Assistance
+
+AI-assisted development tools were used during the development process for:
+
+- Debugging
+- Code improvement
+- API troubleshooting
+- Prompt engineering
+- Documentation assistance
+
+The project was independently integrated, tested and deployed as part of the internship capstone.
+
+---
 
 # 👩‍💻 Author
 
 **Naina Kharola**
 
-B.Tech Computer Science Engineering
+B.Tech Computer Science Engineering  
+Graphic Era University
 
-AI-Assisted Full Stack Web Development Internship
+**Intern ID:** TBI-26100975
+
+**Internship:** TBI-GEU AI-Assisted Full Stack Web Development Internship
 
 ---
 
