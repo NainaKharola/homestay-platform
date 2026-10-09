@@ -14,36 +14,6 @@ https://homestay-mni0.onrender.com/
 
 ---
 
-## 🎥 Demo Video
-
-**YouTube Demo:**  
-[Demo video will be added here]
-
-> The demo video will be uploaded to YouTube as an **Unlisted** video and the link will be added here.
-
----
-
-## 📸 Screenshots
-
-### Home / Dashboard
-
-![HomeStay Home Page](screenshots/home.png)
-
-### Explore / Featured Homestays
-
-![Explore Homestays](screenshots/explore.png)
-
-### Manage Stay
-
-![Manage Stay](screenshots/manage-stay.png)
-
-### AI Property Description Generator
-
-![AI Property Description Generator](screenshots/ai-generator.png)
-
-> Replace the screenshot filenames above with the actual screenshots added to the `screenshots/` folder.
-
----
 
 # ✨ Features
 
